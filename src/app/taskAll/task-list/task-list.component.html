@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../task-list/task-list.component.css">
+
+<div class="page-container">
+
+    <!-- Calling for Nav Bar -->
+    <div class="navbar">
+        <app-navbar></app-navbar>
+    </div>
+
+    <!-- this is main division -->
+    <div class="tasks">
+        <div class="task-form">
+            <h2>Add New Task</h2>
+            <label for="title">Title:</label>
+            <input [(ngModel)]="newTask.title" id="title" />
+            <label for="description">Description:</label>
+            <input [(ngModel)]="newTask.description" id="description" />
+            <button (click)="addTask()">Add</button>
+        </div>
+        
+        <div class="task-list">
+            <table>
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                <td>{{ task.id }}</td>
+                <td>
+                    <ng-container *ngIf="editingTask !== task; else editMode">
+                    {{ task.title }}
+                    </ng-container>
+                    <ng-template #editMode>
+                    <input [(ngModel)]="task.title" />
+                    </ng-template>
+                </td>
+                <td>
+                    <ng-container *ngIf="editingTask !== task; else editModeDesc">
+                    {{ task.description }}
+                    </ng-container>
+                    <ng-template #editModeDesc>
+                    <input [(ngModel)]="task.description" />
+                    </ng-template>
+                </td>
+                <td>
+                    <ng-container *ngIf="editingTask !== task; else saveMode">
+                    <button (click)="editTask(task)">Edit</button>
+                    <button (click)="deleteTask(task.id)">Delete</button>
+                    </ng-container>
+                    <ng-template #saveMode>
+                    <button (click)="updateTask()">Save</button>
+                    <button (click)="deleteTask(task.id)">Delete</button>
+                    </ng-template>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+</div>

@@ -1,0 +1,51 @@
+.app-component{
+    width: 96%;
+}
+
+.mr-2{
+    margin-left: 25px;
+}
+.main-box{
+    height: 1000px;
+    background-color: rgb(209, 204, 204);
+    width: 150px;
+    position: absolute;
+}
+
+.menu-items{
+    list-style-type: none;
+    line-height: 60px;
+    padding-left: 0px;
+    height: 100%;
+}
+
+.menu-items li{
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 25px;
+    cursor: pointer;
+    display: flex;
+    width: 145px;
+}
+
+.menu-items li:hover{
+    background-color: white;
+    color: rgb(165, 159, 159);
+}
+
+.onActive{
+    color: whitesmoke;
+    background-color: rgb(61, 61, 233);
+    box-shadow: -9px 23px 45px -20px rgba(0,0,0,1);
+    -webkit-box-shadow: -9px 23px 45px -20px rgba(0,0,0,1);
+    -moz-box-shadow: -9px 23px 45px -20px rgba(0,0,0,1);
+}
+
+.onActive:hover{
+    color: whitesmoke !important;
+    background-color: rgb(61, 61, 233) !important;
+}
+
+.tabs{
+    margin-left: 500px;
+}

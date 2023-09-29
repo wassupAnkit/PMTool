@@ -1,0 +1,69 @@
+
+
+<link rel="stylesheet" href="../employee/employee.component.css">
+
+<div class="page-container">
+
+    <!-- Calling for Nav Bar -->
+    <div class="navbar">
+        <app-navbar></app-navbar>
+    </div>
+
+    <!-- this is main division -->
+    <div class="tasks">
+        <div class="task-form">
+            <h2>Add New employee: </h2>
+            <label for="title">Full Name:</label>
+            <input [(ngModel)]="newEmployee.title" id="title" />
+            <label for="description">Email:</label>
+            <input [(ngModel)]="newEmployee.description" id="description" />
+            <button (click)="addEmployee()">Add</button>
+        </div>
+        
+        <div class="task-list">
+            <table>
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                <td>{{ employee.id }}</td>
+                <td>
+                    <ng-container *ngIf="editingEmployee !== employee; else editMode">
+                    {{ employee.title }}
+                    </ng-container>
+                    <ng-template #editMode>
+                    <input [(ngModel)]="employee.title" />
+                    </ng-template>
+                </td>
+                <td>
+                    <ng-container *ngIf="editingEmployee !== employee; else editModeDesc">
+                    {{ employee.description }}
+                    </ng-container>
+                    <ng-template #editModeDesc>
+                    <input [(ngModel)]="employee.description" />
+                    </ng-template>
+                </td>
+                <td>
+                    <ng-container *ngIf="editingEmployee !== employee; else saveMode">
+                    <button (click)="editEmployee(employee)">Edit</button>
+                    <button (click)="deleteEmployee(employee.id)">Delete</button>
+                    </ng-container>
+                    <ng-template #saveMode>
+                    <button (click)="updateEmployee()">Save</button>
+                    <button (click)="deleteEmployee(employee.id)">Delete</button>
+                    </ng-template>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+</div>

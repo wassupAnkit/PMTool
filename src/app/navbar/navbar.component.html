@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="navbar.component.css">
+<section class="navbar">
+    <div class="row">
+        <div class="col-lg-2">
+
+            <div class="main-box">
+                <div class="side-menu-list">
+                    <ul class="menu-items">
+                        <li routerLink="/dashboard"(click)="goTo('Dashboard')" [ngClass]="{'onActive':selectedMenu == 'Dashboard'}"><b class="fa" >Dashboard</b></li>
+                        <li routerLink="/employee" (click)="goTo('Employee')"  [ngClass]="{'onActive':selectedMenu=='Employee'}"><b class="fa">Employee</b></li>
+                        <li routerLink="/sprint" (click)="goTo('Sprint')"  [ngClass]="{'onActive':selectedMenu=='Sprint'}"><b class="fa">Sprint</b></li>
+                        <li routerLink="/task"(click)="goTo('Task')"  [ngClass]="{'onActive':selectedMenu=='Task'}"><b class="fa">Task</b></li> 
+                        <li routerLink="/login"(click)="goTo('Logout')"  [ngClass]="{'onActive':selectedMenu=='Logout'}"><b class="fa">Logout</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="side-menu-content">
+                <div class="tabs" routerLink="/dashboard" *ngIf="selectedMenu =='Dashboard'">
+                </div>
+
+                <div class="tabs" routerLink="/employee" *ngIf="selectedMenu =='Employee'">
+                </div>
+                <div class="tabs" routerLink="/sprint" *ngIf="selectedMenu =='Sprint'">
+                    
+                </div>
+                <div class="tabs" routerLink="/task" *ngIf="selectedMenu =='Task'">
+                    <!-- This is Task!! -->
+                </div>
+                <div class="tabs" routerLink="/login" *ngIf="selectedMenu =='Logout'">
+                    You're logged out!
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

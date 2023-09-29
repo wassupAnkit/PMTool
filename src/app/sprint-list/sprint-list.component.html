@@ -1,0 +1,48 @@
+<div class="navbar">
+  <app-navbar></app-navbar>
+</div>
+
+  <div class="form">
+    <h2>Add New Sprint</h2>
+    <label for="name">Name:</label>
+    <input [(ngModel)]="newSprint.name" id="name" required />
+    <!-- Testing for when the Sprint points is input -->
+    <label for="points">Sprint points:</label>
+    <input [(ngModel)]="newSprint.points" id="points" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" [(ngModel)]="newSprint.startDate" id="startDate" />
+    <label for="endDate">End Date:</label>
+    <input type="date" [(ngModel)]="newSprint.endDate" id="endDate" />
+    <button (click)="addSprint()">Add</button>
+  </div>
+  
+  <div>
+    <h2>Sprint List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Points</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sprint of sprints">
+          <td>{{ sprint.id }}</td>
+          <td>{{ sprint.name }}</td>
+          <td>{{ sprint.startDate | date }}</td>
+          <td>{{ sprint.endDate | date }}</td>
+          <td>{{ sprint.points }}</td> <!-- Display sprint points -->
+          <td>
+            <button (click)="editSprint(sprint)">Edit</button>
+            <button (click)="deleteSprint(sprint.id)">Delete</button>
+            <button (click)="toggleSprintDone(sprint)">{{ sprint.points === 0 ? 'Done' : 'Undone' }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
